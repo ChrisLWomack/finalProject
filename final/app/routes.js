@@ -1,42 +1,118 @@
+module.exports = function(app, passport, db) {
 
-//get video, tags and beats for post from database
-app.get('/', (req, res) => {
-  //console.log(db)
-  db.collection('fruits').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('index.ejs', {fruits: result})
-  })
-})
+// normal routes ===============================================================
 
-//post a new video with its respective tags to the database
-app.post('/fruits', (req, res) => {
-  db.collection('fruits').save({fruit: req.body.fruit, thumbUp: 0, thumbDown:0}, (err, result) => {
-    if (err) return console.log(err)
-    console.log('saved to database')
-    res.redirect('/')
-  })
-})
+    // show the home page (will also have our login links)
+    app.get('/', function(req, res) {
+        res.render('index.ejs');
+    });
 
-//update additional tags added, and songs submitted by producers
-app.put('/fruits', (req, res) => {
-  db.collection('fruits')
-  .findOneAndUpdate({fruit: req.body.fruit}, {
-    $set: {
-      thumbUp:req.body.thumbUp + 1
-    }
-  }, {
-    sort: {_id: -1},
-    upsert: true
-  }, (err, result) => {
-    if (err) return res.send(err)
-    res.send(result)
-  })
-})
+    // PROFILE SECTION =========================
+    //all urls app can reach/ end points ' profile'
+    app.get('/profile', isLoggedIn, function(req, res) {
+        db.collection('posts').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('profile.ejs', {
+            user : req.user,
+            posts: result
+          })
+        })
+    });
+    //passing in user that came with the request as well as the messages^
 
-//delete video tags and songs from (entire post) from database
-app.delete('/fruits', (req, res) => {
-  db.collection('fruits').findOneAndDelete({fruit: req.body.fruit}, (err, result) => {
-    if (err) return res.send(500, err)
-    res.send('Message deleted!')
-  })
-})
+    // LOGOUT ==============================
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+// message board routes ===============================================================
+
+    app.post('/vids', (req, res) => {
+      db.collection('posts').save({name: req.body.name, vid: req.body.vid, link: req.body.link, thumbUp: 0, thumbDown:0}, (err, result) => {
+        if (err) return console.log(err)
+        console.log('saved to database')
+        res.redirect('/profile')
+      })
+    })
+
+    // app.put('/messages', (req, res) => {
+    //   db.collection('messages')
+    //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+    //     $set: {
+    //       thumbUp:req.body.thumbUp + 1
+    //     }
+    //   }, {
+    //     sort: {_id: -1},
+    //     upsert: true
+    //   }, (err, result) => {
+    //     if (err) return res.send(err)
+    //     res.send(result)
+    //   })
+    // })
+
+    app.delete('/vids', (req, res) => {
+      db.collection('posts').findOneAndDelete({name: req.body.name, vid: req.body.vid, link: req.body.link}, (err, result) => {
+        if (err) return res.send(500, err)
+        res.send('Message deleted!')
+      })
+    })
+
+// =============================================================================
+// AUTHENTICATE (FIRST LOGIN) ==================================================
+// =============================================================================
+
+    // locally --------------------------------
+        // LOGIN ===============================
+        // show the login form
+        app.get('/login', function(req, res) {
+            res.render('login.ejs', { message: req.flash('loginMessage') });
+        });
+
+        // process the login form
+        //passport stratagies (local strategy is just email and password, additional strategies are facebook etc logins)
+        app.post('/login', passport.authenticate('local-login', {
+            successRedirect : '/profile', // redirect to the secure profile section
+            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
+
+        // SIGNUP =================================
+        // show the signup form
+        app.get('/signup', function(req, res) {
+            res.render('signup.ejs', { message: req.flash('signupMessage') });
+        });
+
+        // process the signup form
+        app.post('/signup', passport.authenticate('local-signup', {
+            successRedirect : '/profile', // redirect to the secure profile section
+            failureRedirect : '/signup', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
+
+// =============================================================================
+// UNLINK ACCOUNTS =============================================================
+// =============================================================================
+// used to unlink accounts. for social accounts, just remove the token
+// for local account, remove email and password
+// user account will stay active in case they want to reconnect in the future
+
+    // local -----------------------------------
+    app.get('/unlink/local', isLoggedIn, function(req, res) {
+        var user            = req.user;
+        user.local.email    = undefined;
+        user.local.password = undefined;
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+
+};
+
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
