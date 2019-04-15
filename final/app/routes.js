@@ -7,14 +7,34 @@ module.exports = function(app, passport, db) {
         res.render('index.ejs');
     });
 
+    // app.get('/test', function(req, res) {
+    //     res.render('test.ejs');
+    // });
+
     // PROFILE SECTION =========================
     //all urls app can reach/ end points ' profile'
-    app.get('/profile', isLoggedIn, function(req, res) {
+
+
+    app.get('/test', isLoggedIn, function(req, res) {
+      console.log("get /test");
         db.collection('posts').find().toArray((err, result) => {
           if (err) return console.log(err)
-          res.render('profile.ejs', {
+          res.render('test.ejs', {
             user : req.user,
             posts: result
+          })
+        })
+    });
+
+    app.get('/oneVideo/:videoId', isLoggedIn, function(req, res) {
+      const videoId = req.params.videoId
+      console.log("this is the video id", videoId);
+        db.collection('posts').findOne({videoId: videoId},(err, result) => {
+          if (err) return console.log(err)
+          console.log(result);
+          res.render('oneVideo.ejs', {
+            user : req.user,
+            post: result
           })
         })
     });
@@ -28,13 +48,31 @@ module.exports = function(app, passport, db) {
 
 // message board routes ===============================================================
 
-    app.post('/vids', (req, res) => {
-      db.collection('posts').save({name: req.body.name, vid: req.body.vid, link: req.body.link, thumbUp: 0, thumbDown:0}, (err, result) => {
-        if (err) return console.log(err)
+    // app.post('/vids', (req, res) => {
+    //   db.collection('posts').save({name: req.body.name, vid: req.body.vid, description:req.body.description, link: req.body.link, }, (err, result) => {
+    //     if (err) return console.log(err)
+    //     console.log('saved to database')
+    //     res.redirect('/profile')
+    //   })
+    // })
+
+    app.post('/videoList', (req, res) => {
+      db.collection('posts').insertOne({videoId: req.body.videoId}, (err, result) => {
+        if (err) return console.log("Something is wrong! ", err)
         console.log('saved to database')
-        res.redirect('/profile')
+        res.redirect('/test')
       })
     })
+
+    app.put('/videoList', (req, res) => {
+      console.log(req.body)
+      db.collection('posts')
+      .findOneAndUpdate({videoId: req.body.videoId}, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
+
 
     // app.put('/messages', (req, res) => {
     //   db.collection('messages')
@@ -72,7 +110,7 @@ module.exports = function(app, passport, db) {
         // process the login form
         //passport stratagies (local strategy is just email and password, additional strategies are facebook etc logins)
         app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/test', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -85,7 +123,7 @@ module.exports = function(app, passport, db) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/test', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));

@@ -10,9 +10,9 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> My Chest</h1>
+        <h1></span>My Reels</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-        <p>Add a reel</p>
+        <p>Got a Sync Ready Video?</p>
         <p>Post the Youtube embed source link for the video</p>
     </div>
 
@@ -20,53 +20,35 @@
 
         <!-- LOCAL INFORMATION -->
 
-        <div class="col-sm-6">
-          <h3>Reels</h3>
-          <ul class="playlist">
-          <% for(var i=0; i<sounds.length; i++) {%>
-            <li class="song">
-              <p><%= posts[i].name %></p>
-              <p><span>reel name:</span> <%= posts[i].vid %> </p>
-              <p><span>youtubelink:</span> <%= posts[i].link %></p>
-              <p><iframe width="100%" height="300" scrolling="no" frameborder="" allow="autoplay" src="<%= posts[i].link %>"></iframe> </p>
-              <p><i class="fa fa-trash" ></i></p>
-              <!-- <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> -->
-            </li>
-          <% } %>
-          </ul>
-            </div>
-          <section class="info" >
-
-          <h2>Submit Your Reel</h2>
+        <section class="fillOut" >
+          <h2>Add a Reel</h2>
         <% if (user.local.email) { %>
           <form action="/vids" method="POST">
             <input type="text" value="<%= user.local.email %>" name="name">
             <input type="text" placeholder="video name" name="vid">
+            <input type="text"  value="" placeholder="description" name="description">
             <input type="text" placeholder="embed link" name="link">
+
             <button type="submit">Submit</button>
           </form>
           </section>
         <% } %>
 
         <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                <% if (user.local.email) { %>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
-
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
-
+          <h3>Reels</h3>
+          <ul class="myVid">
+          <% for(var i=0; i<posts.length; i++) {%>
+            <li class="vid">
+              <p><span>username:</span> <%= posts[i].name %></p>
+              <p><span>reel name:</span> <%= posts[i].vid %> </p>
+              <p><span>description:</span> <%= posts[i].description %> </p>
+              <p><iframe width="100%" height="300" scrolling="no" frameborder="" allow="autoplay" src="<%= posts[i].link %>"></iframe> </p>
+            </li>
+          <% } %>
+          </ul>
             </div>
-        </div>
+          <section class="info" >
+
 
 
 </div>

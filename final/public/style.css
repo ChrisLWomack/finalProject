@@ -1,7 +1,55 @@
 body{
-  padding-top:80px;
+  padding-top: 20px;
   word-wrap:break-word;
 }
 img{
   height: 200px;
+}
+
+p{
+      margin: 0 0 5px;
+}
+
+.fillOut{
+  width: 35%;
+  margin-left: 35%;
+}
+.fillOut button{
+  margin-left: 35%;
+}
+.fillOut h2{
+  margin-left: 25%;
+}
+.col-sm-6 {
+  margin-left: 24%;
+}
+.col-sm-6 ul{
+  list-style: none;
+}
+.col-sm-6 h3{
+  margin-left: 46%;
+}
+.col-sm-6 p{
+
+}
+/* end of styling for old version of ejs */
+/* beginning of styling for the first index page */
+
+.front-page{
+  width: 50%;
+    margin-left: 25%;
+    margin-top: 100px;
+    float: left;
+    border-radius: 150px;
+}
+
+.logForm{
+  width: 50%;
+  margin-left: 25%;
+}
+.logForm h1{
+  margin-left: 40%;
+}
+.logForm button{
+  margin-left: 41%;
 }

@@ -1,45 +1,61 @@
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var trash = document.getElementsByClassName("fa-trash");
 
-// Array.from(thumbUp).forEach(function(element) {
+//user posts video link to inputs
+//when the submit happens
+//the
+
+//takes url and breaks it down into the parameters as key and value pairs
+//then specifies the video id value and passes it into api method loadVideoById
+document.getElementById('getVideo').addEventListener('click', function () {
+  var url = document.querySelector('#videoUrl').value;
+
+  var queryString = url.substring( url.indexOf('?') + 1 );
+
+  var params = {};
+  // Split into key/value pairs
+  queries = queryString.split("&");
+  // Convert the array of strings into an object
+  console.log("url: ", url, "querrystring: ", queryString, "querries: ", queries);
+  for ( i = 0, l = queries.length; i < l; i++ ) { // loop through queries
+    temp = queries[i].split('='); // split query into key and value
+    params[temp[0]] = temp[1]; //add the key/value pair to the params object
+    console.log("temp: ", temp, "params: ", params);
+  }
+  console.log(params)
+  // player.loadVideoById(params.v)
+
+  fetch('videoList', {
+    method: 'post',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      'videoId': params.v
+    })
+  })
+  // .then(response => {
+  //   if (response.ok) return response.json()
+  // })
+  .then(data => {
+    console.log("about to reload client side: ", data)
+    window.location.reload(true)
+  })
+})
+
+//end of parser
+// 
+// let playVideo = document.getElementsByClassName("initiate")
+
+
+
+
+//
+// Array.from(playVideo).forEach(function list(element) {
 //       element.addEventListener('click', function(){
-//         const name = this.parentNode.parentNode.childNodes[1].innerText
-//         const msg = this.parentNode.parentNode.childNodes[3].innerText
-//         const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-//         fetch('messages', {
-//           method: 'put',
-//           headers: {'Content-Type': 'application/json'},
-//           body: JSON.stringify({
-//             'name': name,
-//             'msg': msg,
-//             'thumbUp':thumbUp
-//           })
-//         })
-//         .then(response => {
-//           if (response.ok) return response.json()
-//         })
-//         .then(data => {
-//           console.log(data)
-//           window.location.reload(true)
-//         })
-//       });
+//
+//       let id = this.getAttribute("data-videoId")
+//
+//         console.log("id: ", id);
+//
+//         return id;
+//       })
 // });
-
-Array.from(trash).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('posts', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg
-          })
-        }).then(function (response) {
-          window.location.reload()
-        })
-      });
-});
+//
+// console.log("this the finction", list());
