@@ -14,7 +14,7 @@ module.exports = function(app, passport, db) {
     // PROFILE SECTION =========================
     //all urls app can reach/ end points ' profile'
 
-
+//if logged in grabs posts from that user and renders their videos
     app.get('/test', isLoggedIn, function(req, res) {
       console.log("get /test");
         db.collection('posts').find().toArray((err, result) => {
@@ -26,6 +26,10 @@ module.exports = function(app, passport, db) {
         })
     });
 
+    //i need a page that has a lists of links that can can take you the
+    //oneVideo path with the respective video id
+//gets one video id from the database and loads that post
+//renders it into oneVideo ejs template
     app.get('/oneVideo/:videoId', isLoggedIn, function(req, res) {
       const videoId = req.params.videoId
       console.log("this is the video id", videoId);
@@ -55,14 +59,15 @@ module.exports = function(app, passport, db) {
     //     res.redirect('/profile')
     //   })
     // })
-
+//post video id to database
     app.post('/videoList', (req, res) => {
-      db.collection('posts').insertOne({videoId: req.body.videoId}, (err, result) => {
+      db.collection('posts').insertOne({videoId: req.body.videoId, scUrl: []}, (err, result) => {
         if (err) return console.log("Something is wrong! ", err)
         console.log('saved to database')
         res.redirect('/test')
       })
     })
+    //need a post that can submit a song to a video on the one video page
 
     app.put('/videoList', (req, res) => {
       console.log(req.body)

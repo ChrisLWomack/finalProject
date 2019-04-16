@@ -8,8 +8,10 @@
 document.getElementById('getVideo').addEventListener('click', function () {
   var url = document.querySelector('#videoUrl').value;
 
+//makes a sub string of all characters after the ?
   var queryString = url.substring( url.indexOf('?') + 1 );
 
+//makes an empty object
   var params = {};
   // Split into key/value pairs
   queries = queryString.split("&");
@@ -40,22 +42,4 @@ document.getElementById('getVideo').addEventListener('click', function () {
 })
 
 //end of parser
-// 
-// let playVideo = document.getElementsByClassName("initiate")
-
-
-
-
 //
-// Array.from(playVideo).forEach(function list(element) {
-//       element.addEventListener('click', function(){
-//
-//       let id = this.getAttribute("data-videoId")
-//
-//         console.log("id: ", id);
-//
-//         return id;
-//       })
-// });
-//
-// console.log("this the finction", list());

@@ -1,6 +1,7 @@
 body{
   padding-top: 20px;
   word-wrap:break-word;
+  background-color: black;
 }
 img{
   height: 200px;
@@ -34,22 +35,102 @@ p{
 }
 /* end of styling for old version of ejs */
 /* beginning of styling for the first index page */
+header{
+  width: 100%;
+  border: 2px solid black;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0 auto;
+  background-color: blue;
+}
+header h1{
+      margin-left: 41%;
+}
+.page{
+  background-color: black;
+}
+.container{
+  background-color: ;
+}
+.bottomIndex{
+  width: 50%;
+  height: 400px;
+  border-radius: 50%;
+  border: 2px solid white;
 
-.front-page{
+  font-family: 'Orbitron', sans-serif;
+  margin: 0 auto;
+}
+
+
+.bottomIndex{
+      margin-top: 90px;
+}
+.bottomIndex p{
+    margin-left: 40%;
+    color: blue;
+    margin-top: 15%;
+}
+.bottomIndex a:first-of-type{
+  margin-left: 17%;
+}
+.bottomIndex a:nth-of-type(2n){
+  margin-left: 25%;
+}
+.bottomIndex button{
+  width: 20%;
+  height: 125px;
+  font-family: 'Orbitron', sans-serif;
+  background:url('img/syncOne.gif');
+  background-size: cover;
+  background-color: white;
+  color:blue;
+
+
+}
+
+
+/* .front-page{
   width: 50%;
     margin-left: 25%;
     margin-top: 100px;
     float: left;
     border-radius: 150px;
-}
+} */
+
+
+/* login page */
 
 .logForm{
   width: 50%;
   margin-left: 25%;
 }
 .logForm h1{
-  margin-left: 40%;
+      margin-left: 44%;
+      color: white;
 }
 .logForm button{
-  margin-left: 41%;
+  margin-left: 39%;
+  margin-top: 20px;
+  width: 20%;
+  height: 125px;
+  font-family: 'Orbitron', sans-serif;
+  background:url('img/syncOne.gif');
+  background-size: cover;
+  background-color: white;
+
+}
+.form-group label{
+  margin-left: 29%;
+  color: white;
+}
+/* one video page */
+.vid{
+  width: 45%;
+  float: left;
+}
+.tracks{
+  width: 45%;
+  float: left;
+  height: 400px;
+  overflow: auto;
 }
