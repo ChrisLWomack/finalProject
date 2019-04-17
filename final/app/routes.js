@@ -17,7 +17,7 @@ module.exports = function(app, passport, db) {
 //if logged in grabs posts from that user and renders their videos
     app.get('/test', isLoggedIn, function(req, res) {
       console.log("get /test");
-        db.collection('posts').find().toArray((err, result) => {
+        db.collection('posts').find({username: req.user.local.email}).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('test.ejs', {
             user : req.user,
@@ -25,6 +25,18 @@ module.exports = function(app, passport, db) {
           })
         })
     });
+
+    app.get('/feed', function(req, res) {
+      console.log("get /test");
+        db.collection('posts').find().toArray((err, result) => {
+          if (err) return console.log(err)
+          res.render('feed.ejs', {
+            posts: result
+          })
+        })
+    });
+
+
 
     //i need a page that has a lists of links that can can take you the
     //oneVideo path with the respective video id
@@ -37,6 +49,19 @@ module.exports = function(app, passport, db) {
           if (err) return console.log(err)
           console.log(result);
           res.render('oneVideo.ejs', {
+            user : req.user,
+            post: result
+          })
+        })
+    });
+
+    app.get('/feedVideo/:videoId', function(req, res) {
+      const videoId = req.params.videoId
+      console.log("this is the video id", videoId);
+        db.collection('posts').findOne({videoId: videoId},(err, result) => {
+          if (err) return console.log(err)
+          console.log(result);
+          res.render('feedVideo.ejs', {
             user : req.user,
             post: result
           })
@@ -61,20 +86,23 @@ module.exports = function(app, passport, db) {
     // })
 //post video id to database
     app.post('/videoList', (req, res) => {
-      db.collection('posts').insertOne({videoId: req.body.videoId, scUrl: []}, (err, result) => {
+      db.collection('posts').insertOne({username: req.user.local.email, videoId: req.body.videoId, scUrl: []}, (err, result) => {
         if (err) return console.log("Something is wrong! ", err)
         console.log('saved to database')
         res.redirect('/test')
       })
     })
+
+
     //need a post that can submit a song to a video on the one video page
 
-    app.put('/videoList', (req, res) => {
-      console.log(req.body)
+    app.post('/addSong', (req, res) => {
+
+      console.log('add song', req.body)
       db.collection('posts')
-      .findOneAndUpdate({videoId: req.body.videoId}, (err, result) => {
+      .findOneAndUpdate({videoId: req.body.videoId}, {$push: {scUrl: req.body.song }}, (err, result) => {
         if (err) return res.send(err)
-        res.send(result)
+        res.redirect('/feedVideo/' + req.body.videoId)
       })
     })
 

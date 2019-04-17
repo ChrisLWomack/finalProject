@@ -129,7 +129,7 @@ header h1{
   float: left;
 }
 .tracks{
-  width: 45%;
+    width: 25%;
   float: left;
   height: 400px;
   overflow: auto;

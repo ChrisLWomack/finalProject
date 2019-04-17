@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>See and Sync</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <input id="videoUrl" type="" name="" value="">
+  <button id="getVideo" type="submit" name="button"></button>
+
+  <% for(let i=0; i < posts.length; i++){ %>
+
+  <!-- <button data-videoId="<%= posts[i].videoId %>" class="initiate" type="button">video</button> -->
+
+
+
+
+<div class="container">
+
+
+  <div id="youtubePlayer<%= i %>">
+
+  </div>
+  <a href="/feedVideo/<%= posts[i].videoId %>"> <button type="button" name="button">View Post</button></a>
+<% } %>
+
+
+
+</div>
+
+<!-- <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script> -->
+
+<script src="main.js" type="text/javascript"></script>
+<script type="text/javascript">
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+<% for(let i=0; i < posts.length; i++){ %>
+var player<%= i %>;
+<% } %>
+function onYouTubeIframeAPIReady() {
+  <% for(let i=0; i < posts.length; i++){ %>
+  player<%= i %> = new YT.Player('youtubePlayer<%= i %>', {
+    height: '390',
+    width: '640',
+    // videoId: 'M7lc1UVf-VE',
+    videoId: '<%= posts[i].videoId %>',
+    events: {}
+  });
+  <% } %>
+}
+
+</script>
+</body>
+</html>
