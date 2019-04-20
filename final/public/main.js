@@ -43,3 +43,24 @@ document.getElementById('getVideo').addEventListener('click', function () {
 
 //end of parser
 //
+
+var erase = document.getElementsByClassName('remove');
+Array.from(erase).forEach(function(element) {
+      element.addEventListener('click', function(){
+        // const vid = this.parentNode.parentNode.childNodes[1].innerText
+        let videoId = this.getAttribute('data-delete')
+        console.log("connect", videoId);
+        fetch('video', {
+          method: 'delete',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'videoId': videoId
+          })
+        }).then(function (response) {
+          console.log(response);
+          window.location.reload()
+        })
+      });
+});

@@ -1,5 +1,5 @@
 module.exports = function(app, passport, db) {
-
+var mongodb = require('mongodb');
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -75,7 +75,7 @@ module.exports = function(app, passport, db) {
         res.redirect('/');
     });
 
-// message board routes ===============================================================
+
 
     // app.post('/vids', (req, res) => {
     //   db.collection('posts').save({name: req.body.name, vid: req.body.vid, description:req.body.description, link: req.body.link, }, (err, result) => {
@@ -107,23 +107,10 @@ module.exports = function(app, passport, db) {
     })
 
 
-    // app.put('/messages', (req, res) => {
-    //   db.collection('messages')
-    //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-    //     $set: {
-    //       thumbUp:req.body.thumbUp + 1
-    //     }
-    //   }, {
-    //     sort: {_id: -1},
-    //     upsert: true
-    //   }, (err, result) => {
-    //     if (err) return res.send(err)
-    //     res.send(result)
-    //   })
-    // })
 
-    app.delete('/vids', (req, res) => {
-      db.collection('posts').findOneAndDelete({name: req.body.name, vid: req.body.vid, link: req.body.link}, (err, result) => {
+    app.delete('/video', (req, res) => {
+      console.log(req.body.videoId);
+      db.collection('posts').findOneAndDelete({videoId: req.body.videoId}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })

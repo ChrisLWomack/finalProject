@@ -117,11 +117,43 @@ header h1{
   background:url('img/syncOne.gif');
   background-size: cover;
   background-color: white;
-
+}
+.logForm p {
+  color: white;
+  margin-left: 39%;
 }
 .form-group label{
   margin-left: 29%;
   color: white;
+}
+/* test page */
+.topProfile h2, .topProfile h4{
+
+  color: blue;
+}
+.topProfile h2{
+  margin-left: 45%;
+}
+.topProfile h4{
+  margin-left: 46%;
+}
+.topProfile input{
+  margin-left: 43%;
+}
+.myPosts{
+  width: 50%;
+margin-left: 25%;
+border: 5px solid blue;
+}
+.myPosts iframe{
+  margin-left: 7%;
+  padding-top: 20px;
+}
+.myPosts button{
+  margin-left: 46%;
+}
+i.far.fa-trash-alt {
+    color: blue;
 }
 /* one video page */
 .vid{
