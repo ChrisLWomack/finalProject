@@ -1,7 +1,7 @@
 body{
   padding-top: 20px;
   word-wrap:break-word;
-  background-color: black;
+
 }
 img{
   height: 200px;
@@ -11,7 +11,40 @@ p{
       margin: 0 0 5px;
 }
 
-.fillOut{
+header{
+  width: 100%;
+  border: 2px solid black;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0 auto;
+  clear: both;
+  background-color: #101010;
+  height: 75px;
+  /* background-color: #04396C; */
+}
+header h1{
+      margin-left: 1%;
+      float: left;
+}
+#profile{
+  margin-left: 61%;
+  color: white;
+  background-color: #11ffee00;
+  border: 1px solid white;
+}
+#feed{
+  margin-left: 1%;
+  background-color: #AA0C2C;
+  border: none;
+}
+header button:first-of-type, header button:nth-of-type(2n){
+  float: left;
+  margin-top: 15px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+/* .fillOut{
   width: 35%;
   margin-left: 35%;
 }
@@ -32,60 +65,54 @@ p{
 }
 .col-sm-6 p{
 
-}
+} */
 /* end of styling for old version of ejs */
 /* beginning of styling for the first index page */
-header{
-  width: 100%;
-  border: 2px solid black;
-  font-family: 'Orbitron', sans-serif;
-  margin: 0 auto;
-  background-color: blue;
-}
-header h1{
-      margin-left: 41%;
-}
+
 .page{
   background-color: black;
 }
 .container{
-  background-color: ;
+  height: 1000px;
+  background-image: url('img/background.jpg');
+  background-size: cover;
 }
-.bottomIndex{
+.bottomIndex, .topIndex{
   width: 50%;
-  height: 400px;
-  border-radius: 50%;
-  border: 2px solid white;
+  /* height: 400px; */
+  /* border-radius: 50%; */
+  /* border: 2px solid white; */
+    background-color: #101010;
+    opacity: .9;
 
   font-family: 'Orbitron', sans-serif;
-  margin: 0 auto;
+  margin-left: 25%;
+  /* margin: 0 auto; */
 }
 
 
 .bottomIndex{
-      margin-top: 90px;
+      /* margin-top: 90px; */
 }
-.bottomIndex p{
+.bottomIndex p, .topIndex p{
     margin-left: 40%;
-    color: blue;
-    margin-top: 15%;
+    color: white;
+    /* margin-top: 15%; */
 }
-.bottomIndex a:first-of-type{
+.bottomIndex a:first-of-type, .topIndex a:first-of-type{
   margin-left: 17%;
 }
-.bottomIndex a:nth-of-type(2n){
+.bottomIndex a:nth-of-type(2n), .topIndex a:nth-of-type(2n){
   margin-left: 25%;
 }
-.bottomIndex button{
+.bottomIndex button, .topIndex button{
   width: 20%;
   height: 125px;
   font-family: 'Orbitron', sans-serif;
-  background:url('img/syncOne.gif');
+  /* background:url('img/syncOne.gif'); */
   background-size: cover;
   background-color: white;
-  color:blue;
-
-
+  color: #AA0C2C;
 }
 
 
@@ -114,7 +141,7 @@ header h1{
   width: 20%;
   height: 125px;
   font-family: 'Orbitron', sans-serif;
-  background:url('img/syncOne.gif');
+  /* background:url('img/syncOne.gif'); */
   background-size: cover;
   background-color: white;
 }
@@ -129,10 +156,11 @@ header h1{
 /* test page */
 .topProfile h2, .topProfile h4{
 
-  color: blue;
+  color: black;
 }
 .topProfile h2{
   margin-left: 45%;
+  margin-top: 0%;
 }
 .topProfile h4{
   margin-left: 46%;
@@ -143,26 +171,35 @@ header h1{
 .myPosts{
   width: 50%;
 margin-left: 25%;
-border: 5px solid blue;
+border: 5px;
+border-color: #04396C;
+
 }
 .myPosts iframe{
   margin-left: 7%;
   padding-top: 20px;
 }
 .myPosts button{
-  margin-left: 46%;
+  margin-left: 43%;
 }
-i.far.fa-trash-alt {
-    color: blue;
+.myPosts .remove{
+    color: #04396C;
+    margin: 0;
 }
 /* one video page */
+
 .vid{
   width: 45%;
   float: left;
+  margin-left: 15%;
 }
 .tracks{
     width: 25%;
   float: left;
   height: 400px;
   overflow: auto;
+}
+.tracks button{
+  border-radius: 50%;
+  margin-left: 41%;
 }

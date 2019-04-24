@@ -17,6 +17,7 @@ var mongodb = require('mongodb');
 //if logged in grabs posts from that user and renders their videos
     app.get('/test', isLoggedIn, function(req, res) {
       console.log("get /test");
+      if (req.user.type === "music_producer") return res.redirect('/feed')
         db.collection('posts').find({username: req.user.local.email}).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('test.ejs', {
@@ -54,6 +55,15 @@ var mongodb = require('mongodb');
           })
         })
     });
+
+    app.get('/checkMember', isLoggedIn, function(req, res) {
+    console.log("this is the /checkMember filter", req.user.local.house)
+    if(req.user.local.house){
+      res.redirect('/test')
+    }else{
+      res.redirect('/feed')
+    }
+  })
 
     app.get('/feedVideo/:videoId', function(req, res) {
       const videoId = req.params.videoId
