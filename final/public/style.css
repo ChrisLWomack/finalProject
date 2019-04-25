@@ -1,8 +1,9 @@
 body{
   padding-top: 20px;
   word-wrap:break-word;
-
+  font-size: 10px;
 }
+
 img{
   height: 200px;
 }
@@ -11,7 +12,7 @@ p{
       margin: 0 0 5px;
 }
 
-header{
+header, footer{
   width: 100%;
   border: 2px solid black;
   color: white;
@@ -25,6 +26,7 @@ header{
 header h1{
       margin-left: 1%;
       float: left;
+      font-size: 1.5rem;
 }
 #profile{
   margin-left: 61%;
@@ -77,6 +79,29 @@ header button:first-of-type, header button:nth-of-type(2n){
   background-image: url('img/background.jpg');
   background-size: cover;
 }
+.container .welcome{
+  text-align: center;
+  color: white;
+}
+.intro{
+  font-family: 'Orbitron', sans-serif;
+}
+.intro p:first-of-type{
+font-size: 2rem;
+margin-top: 42px;
+}
+.intro p:nth-of-type(2n){
+  font-size: 1.5rem;
+}
+.intro p:nth-of-type(3n){
+  font-size: 1.5rem;
+}
+.intro p:nth-of-type(4n){
+font-size: 1.2rem;
+padding-top: 60px;
+}
+
+
 .bottomIndex, .topIndex{
   width: 50%;
   /* height: 400px; */
@@ -87,16 +112,21 @@ header button:first-of-type, header button:nth-of-type(2n){
 
   font-family: 'Orbitron', sans-serif;
   margin-left: 25%;
+
   /* margin: 0 auto; */
 }
 
-
 .bottomIndex{
       /* margin-top: 90px; */
+margin-top: 5%;
+padding-bottom: 30px;
+padding-top: 30px;
+border-radius: 7px;
 }
 .bottomIndex p, .topIndex p{
     margin-left: 40%;
     color: white;
+    font-size: 1rem;
     /* margin-top: 15%; */
 }
 .bottomIndex a:first-of-type, .topIndex a:first-of-type{
@@ -107,12 +137,15 @@ header button:first-of-type, header button:nth-of-type(2n){
 }
 .bottomIndex button, .topIndex button{
   width: 20%;
-  height: 125px;
+  height: 90px;
+  font-size: 1.2rem;
   font-family: 'Orbitron', sans-serif;
   /* background:url('img/syncOne.gif'); */
-  background-size: cover;
+  /* background-size: cover; */
   background-color: white;
   color: #AA0C2C;
+  border-radius: 10px;
+  font-weight: 400;
 }
 
 
@@ -154,6 +187,16 @@ header button:first-of-type, header button:nth-of-type(2n){
   color: white;
 }
 /* test page */
+
+.backdrop{
+  /* height: 1000px; */
+  background: linear-gradient(#AA0C2C, #101010);
+  /* background-color: #AA0C2C; */
+  /* background-size: cover; */
+  /* display: flex; */
+
+}
+
 .topProfile h2, .topProfile h4{
 
   color: black;
@@ -161,19 +204,32 @@ header button:first-of-type, header button:nth-of-type(2n){
 .topProfile h2{
   margin-left: 45%;
   margin-top: 0%;
+  font-size: 2rem;
+  font-family:'Orbitron', sans-serif;
+  color: #101010
 }
 .topProfile h4{
   margin-left: 46%;
 }
 .topProfile input{
-  margin-left: 43%;
+  margin-left: 41%;
+  height: 26px;
+  border-radius: 5px;
+  margin-right: .5%;
+}
+.topProfile button{
+  background-color: #101010;
+  border: none;
+  height: 50px;
+  border-radius: 5px;
+  color: white;
 }
 .myPosts{
   width: 50%;
 margin-left: 25%;
 border: 5px;
 border-color: #04396C;
-
+padding-bottom: 50px;
 }
 .myPosts iframe{
   margin-left: 7%;
@@ -181,13 +237,22 @@ border-color: #04396C;
 }
 .myPosts button{
   margin-left: 43%;
+    background-color: #AA0C2C;
+    border: none;
+  margin-top: 15px;
+  height: 50px;
+  border-radius: 5px;
 }
 .myPosts .remove{
-    color: #04396C;
+    background-color: #101010;
+    color: white;
+    font-size: 1rem;
     margin: 0;
 }
 /* one video page */
-
+.vid, .tracks{
+  margin-top: 25px;
+}
 .vid{
   width: 45%;
   float: left;
@@ -198,8 +263,13 @@ border-color: #04396C;
   float: left;
   height: 400px;
   overflow: auto;
+  padding-right: 2%;
 }
 .tracks button{
   border-radius: 50%;
   margin-left: 41%;
+  background-color: #101010;
+  border: none;
+
+
 }
