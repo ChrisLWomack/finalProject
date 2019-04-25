@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body{
   padding-top: 20px;
   word-wrap:break-word;
@@ -72,10 +76,7 @@ margin-top: 42px;
 .intro p:nth-of-type(3n){
   font-size: 1.5rem;
 }
-.intro p:nth-of-type(4n){
-font-size: 1.2rem;
-padding-top: 60px;
-}
+
 
 .bottomIndex, .topIndex{
   width: 50%;
@@ -125,26 +126,46 @@ border-radius: 7px;
   margin-left: 25%;
 }
 .logForm h1{
-      margin-left: 44%;
+      margin-left: 41%;
       color: white;
+      padding-top: 15px;
+      font-size: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
 }
 .logForm button{
   margin-left: 39%;
   margin-top: 20px;
   width: 20%;
-  height: 125px;
+  height: 40px;
   font-family: 'Orbitron', sans-serif;
-  /* background:url('img/syncOne.gif'); */
+  font-weight: 600;
+  border-radius: 10px;
   background-size: cover;
   background-color: white;
 }
 .logForm p {
   color: white;
   margin-left: 39%;
+  font-size: 1.5rem;
+}
+.logForm p a{
+  color: black;
+  font-weight: 600;
 }
 .form-group label{
   margin-left: 29%;
-  color: white;
+  color: black;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+/* sign up ===================================================================*/
+.radios{
+  margin-left: 27%;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  padding-top: 10px;
+  font-weight: 600;
 }
 /* test page ================================================================= */
 
@@ -163,8 +184,13 @@ border-radius: 7px;
   font-family:'Orbitron', sans-serif;
   color: #101010
 }
-.topProfile h4{
-  margin-left: 46%;
+.topProfile p{
+  margin-left: 23%;
+  margin-top: 0%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family:'Orbitron', sans-serif;
+  color: white;
 }
 .topProfile input{
   margin-left: 41%;
@@ -209,8 +235,10 @@ padding-bottom: 50px;
   background: linear-gradient(#AA0C2C, #101010);
   float: left;
   width: 100%;
+  /* height: 670px; */
 
 }
+
 .vid, .tracks{
   margin-top: 25px;
 }
@@ -218,6 +246,9 @@ padding-bottom: 50px;
   width: 45%;
   float: left;
   margin-left: 15%;
+}
+.vid a{
+  margin-left: 5%;
 }
 .tracks{
     width: 25%;
@@ -240,6 +271,21 @@ color: white;
 }
 
 /* feed ==========================================================================*/
+.backdropTwo h2{
+  font-size: 2rem;
+  padding-top: 10px;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  margin-left: 41%;
+}
+.backdropTwo p{
+font-size: 1.2rem;
+padding-top: 10px;
+font-family: 'Orbitron', sans-serif;
+color: white;
+margin-left: 30%;
+}
+
 .feedVid{
   width: 50%;
 margin-left: 25%;
@@ -253,12 +299,14 @@ float: left;
   padding-top: 20px;
 }
 .feedVid button{
-  margin-left: 43%;
+  margin-left: 45%;
     background-color: #AA0C2C;
-    border: none;
+    border: 2px solid black;
   margin-top: 15px;
   height: 50px;
   border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
 }
 .feedVid .remove{
     background-color: #101010;

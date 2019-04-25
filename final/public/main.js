@@ -1,8 +1,6 @@
 
 //user posts video link to inputs
 //when the submit happens
-//the
-
 //takes url and breaks it down into the parameters as key and value pairs
 //then specifies the video id value and passes it into api method loadVideoById
 document.getElementById('getVideo').addEventListener('click', function () {
@@ -32,17 +30,12 @@ document.getElementById('getVideo').addEventListener('click', function () {
       'videoId': params.v
     })
   })
-  // .then(response => {
-  //   if (response.ok) return response.json()
-  // })
   .then(data => {
     console.log("about to reload client side: ", data)
     window.location.reload(true)
   })
 })
-
 //end of parser
-//
 
 var erase = document.getElementsByClassName('remove');
 Array.from(erase).forEach(function(element) {

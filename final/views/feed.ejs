@@ -15,50 +15,50 @@
     <a href="/feed"><button id="feed" type="button" name="button">Video Feed</button></a>
   </header>
 
-<div class="backdropTwo">
+  <div class="backdropTwo">
+    <h2>Video Feed</h2>
+      <p class="welcome" >SEE a video you love and SYNC it with a song that fits.</p>
 
-  <!-- <input id="videoUrl" type="" name="" value="">
-  <button id="getVideo" type="submit" name="button"></button> -->
+    <!-- <input id="videoUrl" type="" name="" value="">
+    <button id="getVideo" type="submit" name="button"></button> -->
 
-  <% for(let i=0; i < posts.length; i++){ %>
+    <% for(let i=0; i < posts.length; i++){ %>
 
-  <!-- <button data-videoId="<%= posts[i].videoId %>" class="initiate" type="button">video</button> -->
-<section class="feedVid" >
-  <div id="youtubePlayer<%= i %>">
+    <!-- <button data-videoId="<%= posts[i].videoId %>" class="initiate" type="button">video</button> -->
+    <section class="feedVid" >
+      <div id="youtubePlayer<%= i %>">
+
+      </div>
+      <a href="/feedVideo/<%= posts[i].videoId %>"> <button type="button" name="button">View Post</button></a>
+    </section>
+    <% } %>
 
   </div>
-  <a href="/feedVideo/<%= posts[i].videoId %>"> <button type="button" name="button">View Post</button></a>
-  </section>
-<% } %>
 
-</div>
-
-<!-- <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script> -->
 
 <script src="main.js" type="text/javascript"></script>
 <script type="text/javascript">
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var tag = document.createElement('script');
+  var tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-<% for(let i=0; i < posts.length; i++){ %>
-var player<%= i %>;
-<% } %>
-function onYouTubeIframeAPIReady() {
   <% for(let i=0; i < posts.length; i++){ %>
-  player<%= i %> = new YT.Player('youtubePlayer<%= i %>', {
-    height: '390',
-    width: '640',
-    // videoId: 'M7lc1UVf-VE',
-    videoId: '<%= posts[i].videoId %>',
-    events: {}
-  });
+  var player<%= i %>;
   <% } %>
-}
+  function onYouTubeIframeAPIReady() {
+    <% for(let i=0; i < posts.length; i++){ %>
+    player<%= i %> = new YT.Player('youtubePlayer<%= i %>', {
+      height: '390',
+      width: '640',
+      videoId: '<%= posts[i].videoId %>',
+      events: {}
+    });
+    <% } %>
+  }
 
 </script>
 </body>

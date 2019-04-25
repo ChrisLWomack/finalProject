@@ -39,26 +39,23 @@
       <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
       <script type="text/javascript">
       var playing = false;
-      console.log('hello')
+      console.log('playing')
       ;(function(){
+        //creates a soundcloud widget for each song in the array of songs for post
         <% for(let i=0; i < post.scUrl.length; i++){ %>
           var widgetIframe<%= i %> = document.getElementById('sc-widget<%= i %>'),
           widget<%= i %> = SC.Widget(widgetIframe<%= i %>)
-          //newSoundUrl = 'http://api.soundcloud.com/tracks/13692671';
+
           console.log(widget<%= i %>)
           widget<%= i %>.bind(SC.Widget.Events.READY, function() {
             console.log("binding events");
             widget<%= i %>.bind(SC.Widget.Events.PLAY, function() {
-              //possible place to call the youtube call method or create a sync
-              //button that on click calls both the soundcloud and youtube apis
               console.log("play button pressed");
             })
             widget<%= i %>.bind(SC.Widget.Events.PAUSE, function() {
-              //also call the youtube pause method or a seperate button
-              //that pauses youtube when soundcloud is paused
+
               console.log("pause pressed");
             })
-
             // load new widget
             widget<%= i %>.bind(SC.Widget.Events.FINISH, function() {
               console.log("finished");
@@ -67,7 +64,9 @@
               });
             });
           });
-          //creating sync button for songs and video
+
+
+          //creating sync button for each of the songs and video
           document.querySelector('#scButton<%= i %>').addEventListener('click',() =>{
             //trigger soundcloud play events
             //trigger yt play event
@@ -79,22 +78,17 @@
               player.pauseVideo()
             }
             widget<%= i %>.toggle();
-
-
-
           })
           <% } %>
         }());
         </script>
 
-
-
-      <!-- <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script> -->
-
       <%# <script src="main.js" type="text/javascript"></script> %>
+
       <script type="text/javascript">
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
+      //loads the correct youtube video
       var tag = document.createElement('script');
 
       tag.src = "https://www.youtube.com/iframe_api";

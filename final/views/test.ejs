@@ -10,47 +10,40 @@
 <body>
   <header>
     <h1>See and Sync <i class="fas fa-sync"></i></h1>
-
     <a href="/test"><button id="profile" type="button" name="button">Back to Profile</button></a>
     <a href="/feed"><button id="feed" type="button" name="button">Video Feed</button></a>
   </header>
+
     <div class="backdrop">
-  <section class="topProfile" >
-    <h2>My Videos</h2>
-    <input id="videoUrl" type="" name="" value="" placeholder="youtube video url" >
-    <button id="getVideo" type="submit" name="button">Add Video</button>
-  </section>
+      <section class="topProfile" >
+        <h2>My Videos</h2>
+        <p>Submit Your Favorite Videos And Check Who's Submitted Background Music</p>
+        <input id="videoUrl" type="" name="" value="" placeholder="youtube video url" >
+        <button id="getVideo" type="submit" name="button">Add Video</button>
+      </section>
 
-  <% for(let i=0; i < posts.length; i++){ %>
-
-    <!-- <button data-videoId="<%= posts[i].videoId %>" class="initiate" type="button">video</button> -->
-
-
-
-
-
+    <% for(let i=0; i < posts.length; i++){ %>
 
       <section class="myPosts" >
-
 
         <div id="youtubePlayer<%= i %>">
 
         </div>
         <a href="/oneVideo/<%= posts[i].videoId %>"> <button id="viewPost" type="button" name="button">View Post</button></a>
-      <button  class="remove" data-delete="<%= posts[i].videoId %>" type="button" name="button"><i class="far fa-trash-alt"></i></button>
+        <button  class="remove" data-delete="<%= posts[i].videoId %>" type="button" name="button"><i class="far fa-trash-alt"></i></button>
       </section>
-      <% } %>
-
-
-
+    <% } %>
     </div>
-<footer></footer>
+  <footer></footer>
     <!-- <script src="https://www.youtube.com/iframe_api" type="text/javascript"></script> -->
 
     <script src="main.js" type="text/javascript"></script>
     <script type="text/javascript">
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
+    //goes through database and creates a new iframe for each post in database
+    //inserts the video id which is saved on submit
+    //becomes the value in the onYouTubeIframeAPIReady and renders video
     var tag = document.createElement('script');
 
     tag.src = "https://www.youtube.com/iframe_api";
@@ -65,7 +58,6 @@
           player<%= i %> = new YT.Player('youtubePlayer<%= i %>', {
             height: '390',
             width: '640',
-            // videoId: 'M7lc1UVf-VE',
             videoId: '<%= posts[i].videoId %>',
             events: {}
           });
