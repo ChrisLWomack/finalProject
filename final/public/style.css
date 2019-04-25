@@ -46,34 +46,10 @@ header button:first-of-type, header button:nth-of-type(2n){
   border-radius: 5px;
 }
 
-/* .fillOut{
-  width: 35%;
-  margin-left: 35%;
-}
-.fillOut button{
-  margin-left: 35%;
-}
-.fillOut h2{
-  margin-left: 25%;
-}
-.col-sm-6 {
-  margin-left: 24%;
-}
-.col-sm-6 ul{
-  list-style: none;
-}
-.col-sm-6 h3{
-  margin-left: 46%;
-}
-.col-sm-6 p{
-
-} */
-/* end of styling for old version of ejs */
-/* beginning of styling for the first index page */
-
 .page{
   background-color: black;
 }
+/* landing index page ========================================================================*/
 .container{
   height: 1000px;
   background-image: url('img/background.jpg');
@@ -101,64 +77,48 @@ font-size: 1.2rem;
 padding-top: 60px;
 }
 
-
 .bottomIndex, .topIndex{
   width: 50%;
-  /* height: 400px; */
-  /* border-radius: 50%; */
-  /* border: 2px solid white; */
     background-color: #101010;
     opacity: .9;
 
   font-family: 'Orbitron', sans-serif;
   margin-left: 25%;
-
-  /* margin: 0 auto; */
 }
 
 .bottomIndex{
-      /* margin-top: 90px; */
 margin-top: 5%;
 padding-bottom: 30px;
 padding-top: 30px;
 border-radius: 7px;
 }
+
 .bottomIndex p, .topIndex p{
     margin-left: 40%;
     color: white;
     font-size: 1rem;
-    /* margin-top: 15%; */
 }
+
 .bottomIndex a:first-of-type, .topIndex a:first-of-type{
   margin-left: 17%;
 }
+
 .bottomIndex a:nth-of-type(2n), .topIndex a:nth-of-type(2n){
   margin-left: 25%;
 }
+
 .bottomIndex button, .topIndex button{
   width: 20%;
   height: 90px;
   font-size: 1.2rem;
   font-family: 'Orbitron', sans-serif;
-  /* background:url('img/syncOne.gif'); */
-  /* background-size: cover; */
   background-color: white;
   color: #AA0C2C;
   border-radius: 10px;
   font-weight: 400;
 }
 
-
-/* .front-page{
-  width: 50%;
-    margin-left: 25%;
-    margin-top: 100px;
-    float: left;
-    border-radius: 150px;
-} */
-
-
-/* login page */
+/* login page ===================================================================*/
 
 .logForm{
   width: 50%;
@@ -186,21 +146,16 @@ border-radius: 7px;
   margin-left: 29%;
   color: white;
 }
-/* test page */
+/* test page ================================================================= */
 
 .backdrop{
-  /* height: 1000px; */
   background: linear-gradient(#AA0C2C, #101010);
-  /* background-color: #AA0C2C; */
-  /* background-size: cover; */
-  /* display: flex; */
-
 }
 
 .topProfile h2, .topProfile h4{
-
   color: black;
 }
+
 .topProfile h2{
   margin-left: 45%;
   margin-top: 0%;
@@ -249,15 +204,11 @@ padding-bottom: 50px;
     font-size: 1rem;
     margin: 0;
 }
-/* one video page */
+/* one video page ================================================================= */
 .backdropTwo{
-  /* height: 1000px; */
   background: linear-gradient(#AA0C2C, #101010);
-  /* background-color: #AA0C2C; */
-  /* background-size: cover; */
-  /* display: flex; */
   float: left;
-  /* height: 100vh; */
+  width: 100%;
 
 }
 .vid, .tracks{
@@ -288,7 +239,7 @@ color: white;
 
 }
 
-/* feed */
+/* feed ==========================================================================*/
 .feedVid{
   width: 50%;
 margin-left: 25%;
@@ -314,4 +265,24 @@ float: left;
     color: white;
     font-size: 1rem;
     margin: 0;
+}
+
+/* feedVideo ======================================================================*/
+
+.backdropTwo form{
+  margin-left: 41%;
+margin-top: 35px;
+}
+.backdropTwo form input:first-of-type{
+
+height: 26px;
+border-radius: 5px;
+margin-right: .5%;
+}
+.backdropTwo form input:nth-of-type(3n){
+  background-color: #101010;
+border: none;
+height: 50px;
+border-radius: 5px;
+color: white;
 }
