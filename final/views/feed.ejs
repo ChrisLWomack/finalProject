@@ -3,29 +3,33 @@
 <head>
     <title>See and Sync</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 </head>
 <body>
+  <header>
+    <h1>See and Sync <i class="fas fa-sync"></i></h1>
 
-  <input id="videoUrl" type="" name="" value="">
-  <button id="getVideo" type="submit" name="button"></button>
+    <a href="/test"><button id="profile" type="button" name="button">Back to Profile</button></a>
+    <a href="/feed"><button id="feed" type="button" name="button">Video Feed</button></a>
+  </header>
+
+<div class="backdropTwo">
+
+  <!-- <input id="videoUrl" type="" name="" value="">
+  <button id="getVideo" type="submit" name="button"></button> -->
 
   <% for(let i=0; i < posts.length; i++){ %>
 
   <!-- <button data-videoId="<%= posts[i].videoId %>" class="initiate" type="button">video</button> -->
-
-
-
-
-<div class="container">
-
-
+<section class="feedVid" >
   <div id="youtubePlayer<%= i %>">
 
   </div>
   <a href="/feedVideo/<%= posts[i].videoId %>"> <button type="button" name="button">View Post</button></a>
+  </section>
 <% } %>
-
-
 
 </div>
 

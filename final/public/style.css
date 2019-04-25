@@ -250,6 +250,16 @@ padding-bottom: 50px;
     margin: 0;
 }
 /* one video page */
+.backdropTwo{
+  /* height: 1000px; */
+  background: linear-gradient(#AA0C2C, #101010);
+  /* background-color: #AA0C2C; */
+  /* background-size: cover; */
+  /* display: flex; */
+  float: left;
+  /* height: 100vh; */
+
+}
 .vid, .tracks{
   margin-top: 25px;
 }
@@ -266,10 +276,42 @@ padding-bottom: 50px;
   padding-right: 2%;
 }
 .tracks button{
-  border-radius: 50%;
-  margin-left: 41%;
-  background-color: #101010;
-  border: none;
+  border-radius: 10px;
+    margin-left: 38%;
+    background-color: #101010;
+    border: none;
+    height: 25px;
+    width: 23%;
+margin-top: 4px;
+margin-bottom: 4px;
+color: white;
 
+}
 
+/* feed */
+.feedVid{
+  width: 50%;
+margin-left: 25%;
+border: 5px;
+border-color: #04396C;
+padding-bottom: 50px;
+float: left;
+}
+.feedVid iframe{
+  margin-left: 7%;
+  padding-top: 20px;
+}
+.feedVid button{
+  margin-left: 43%;
+    background-color: #AA0C2C;
+    border: none;
+  margin-top: 15px;
+  height: 50px;
+  border-radius: 5px;
+}
+.feedVid .remove{
+    background-color: #101010;
+    color: white;
+    font-size: 1rem;
+    margin: 0;
 }
